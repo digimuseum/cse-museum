@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <title>Digital Museum | Immersive Video Gallery</title>
+  <meta name="description"
+    content="An immersive 3D video gallery experience. Explore digital art exhibits in a stunning cylinder carousel." />
+  <meta name="author" content="Digital Museum" />
+
+  <meta property="og:title" content="Digital Museum | Video Gallery" />
+  <meta property="og:description" content="Experience art in motion. An immersive 3D video gallery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@DigitalMuseum" />
+  <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <script type="module" crossorigin src="./assets/index-YoaI6kub.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-4sFzltoE.css">
+</head>
+
+<body>
+  <div id="root">
+    <div
+      style="display: flex; justify-content: center; align-items: center; height: 100vh; background: #000; color: #fff;">
+      Loading Digital Museum...
+    </div>
+  </div>
+  <script>
+    window.addEventListener('error', function (e) {
+      var msg = '';
+      if (e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK')) {
+        msg = 'Resource Load Error: ' + (e.target.src || e.target.href);
+      } else {
+        msg = 'Global Error: ' + e.message + ' at ' + e.filename + ':' + e.lineno;
+      }
+
+      var errorDiv = document.createElement('div');
+      errorDiv.style.position = 'fixed';
+      errorDiv.style.top = '0';
+      errorDiv.style.left = '0';
+      errorDiv.style.width = '100%';
+      errorDiv.style.background = 'red';
+      errorDiv.style.color = 'white';
+      errorDiv.style.padding = '20px';
+      errorDiv.style.zIndex = '9999';
+      errorDiv.innerText = msg;
+      document.body.appendChild(errorDiv);
+    }, true);
+    window.addEventListener('unhandledrejection', function (e) {
+      var errorDiv = document.createElement('div');
+      errorDiv.style.position = 'fixed';
+      errorDiv.style.top = '50px';
+      errorDiv.style.left = '0';
+      errorDiv.style.width = '100%';
+      errorDiv.style.background = 'orange';
+      errorDiv.style.color = 'black';
+      errorDiv.style.padding = '20px';
+      errorDiv.style.zIndex = '9999';
+      errorDiv.innerText = 'Unhandled Rejection: ' + e.reason;
+      document.body.appendChild(errorDiv);
+    });
+  </script>
+</body>
+
+</html>
