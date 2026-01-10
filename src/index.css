@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Thai Pongal Theme Design System */
+
+@layer base {
+  :root {
+    /* Earthy Background (Deep Maroon/Brown) */
+    --background: 14 20% 25%;
+    /* #4E342E */
+    --foreground: 48 91% 94%;
+    /* Cream #FFF8E1 */
+
+    --card: 14 20% 20%;
+    --card-foreground: 48 91% 94%;
+
+    --popover: 14 20% 18%;
+    --popover-foreground: 48 91% 94%;
+
+    --primary: 51 100% 50%;
+    /* Gold #FFD700 */
+    --primary-foreground: 14 20% 25%;
+
+    --secondary: 122 39% 49%;
+    /* Sugarcane Green #4CAF50 */
+    --secondary-foreground: 48 91% 94%;
+
+    --muted: 14 15% 35%;
+    --muted-foreground: 48 60% 85%;
+
+    --accent: 36 100% 50%;
+    /* Sunrise Orange #FF6F00 */
+    --accent-foreground: 48 91% 94%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 51 100% 50%;
+    /* Gold Border */
+    --input: 14 20% 30%;
+    --ring: 51 100% 50%;
+
+    --radius: 1rem;
+
+    /* Pongal Specific Tokens */
+    --glass-bg: 51 100% 90% / 0.05;
+    /* Use warmth in glass */
+    --glass-border: 51 100% 50% / 0.3;
+    /* Gold border */
+    --glass-glow: 36 100% 50% / 0.4;
+    /* Orange Glow */
+    --shadow-depth: 14 30% 10% / 0.6;
+
+    /* Gradients */
+    /* Radial from Deep Maroon to Dark Coffee */
+    --gradient-radial: radial-gradient(circle at center, #4E342E 0%, #261815 100%);
+    --gradient-spotlight: radial-gradient(ellipse at 50% 0%, hsl(51 100% 50% / 0.15) 0%, transparent 60%);
+  }
+
+  /* No dark mode needed, forcing the theme */
+  .dark {
+    --background: 14 20% 25%;
+    --foreground: 48 91% 94%;
+    /* ... duplicate if needed, but root covers it */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Playfair Display', serif;
+    /* Traditional modern serif */
+    background: var(--gradient-radial);
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Playfair Display', serif;
+  }
+
+  p,
+  span,
+  div {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 215, 0, 0.02) 100%);
+    border: 1px solid hsl(var(--glass-border));
+    backdrop-filter: blur(12px);
+    box-shadow:
+      0 10px 30px -5px hsl(var(--shadow-depth)),
+      inset 0 0 0 1px hsl(var(--glass-border));
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        hsl(51 100% 50% / 0.1) 0%,
+        transparent 50%,
+        hsl(36 100% 50% / 0.05) 100%);
+    pointer-events: none;
+  }
+
+  .spotlight {
+    position: fixed;
+    inset: 0;
+    background: var(--gradient-spotlight);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .video-container {
+    @apply relative w-full h-full overflow-hidden rounded-xl;
+    background: #261815;
+    /* Fallback dark coffee */
+  }
+
+  .card-reflection {
+    @apply absolute bottom-0 left-0 right-0 h-1/2;
+    background: linear-gradient(to top,
+        hsl(var(--glass-glow)),
+        transparent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .active-card .card-reflection {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
