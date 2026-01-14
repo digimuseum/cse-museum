@@ -1,7 +1,12 @@
 import { useState, useRef } from "react";
 import { motion, useMotionValue, useTransform, animate, PanInfo } from "framer-motion";
 import VideoCard from "./VideoCard";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Info, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
 import { getPath } from "../lib/utils";
 import exhibitsData from "../data.json";
@@ -85,10 +90,58 @@ const CylinderCarousel = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-
-        <h2 className="text-3xl md:text-5xl font-light text-foreground tracking-tight max-w-4xl mx-auto leading-tight">
-          Department of Computer Science, Mattu Pongal
-        </h2>
+        <div className="flex flex-col items-center gap-2">
+          <div className="flex items-center gap-3">
+            <h2 className="text-2xl md:text-3xl font-light text-foreground tracking-tight leading-tight">
+              Department of Computer Science, Mattu Pongal
+            </h2>
+            
+            <Popover>
+              <PopoverTrigger asChild>
+                <button className="p-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-colors">
+                  <Info className="w-5 h-5 text-primary/80" />
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="bg-background/90 backdrop-blur-md border-primary/20 w-80">
+                <div className="space-y-4">
+                  <h4 className="font-medium leading-none text-primary border-b border-primary/10 pb-2">Creators</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5" />
+                      <div>
+                        <p className="text-sm font-medium">Siddharth B</p>
+                        <p className="text-xs text-muted-foreground">III CSE</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5" />
+                      <div>
+                        <p className="text-sm font-medium">Shyam Sathish</p>
+                        <p className="text-xs text-muted-foreground">III CSE</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5" />
+                      <div>
+                        <p className="text-sm font-medium">Jeyashree</p>
+                        <p className="text-xs text-muted-foreground">IV AIDS</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          </div>
+          
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.8 }}
+            transition={{ delay: 0.6 }}
+            className="text-lg md:text-xl font-light tracking-[0.2em] text-accent uppercase"
+          >
+            Centre for AI
+          </motion.p>
+        </div>
       </motion.div>
 
       {/* Carousel container */}
